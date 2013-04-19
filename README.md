@@ -1,2 +1,3 @@
-Market cart app from scratch
-Agile Web Dev with Rails 3
+# Market cart application
+
+[Agile Web Development with Rails3 4th edition]
