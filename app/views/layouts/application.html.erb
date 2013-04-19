@@ -22,7 +22,13 @@
         <li><a href="http://www..../news">News</a></li>
         <li><a href="http://www..../contact">Contact</a></li>
       </ul>
-      <div style="color:red"><%= l Time.now, :format => :short %></div>
+      <div style="color:red">
+        <%= l Time.now, :format => :short %>
+        <p/>
+        <% if @count>5 %>
+          <%= pluralize @count, 'time' %>
+        <% end %>
+      </div>
     </div>
 
     <div id="main">
