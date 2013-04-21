@@ -50,6 +50,7 @@ class LineItemsController < ApplicationController
         reset_session_counter
         format.html { #redirect_to @line_item.cart
                       redirect_to store_url}
+        format.js
         format.json { render json: @line_item,
                       status: :created, location: @line_item }
       else
