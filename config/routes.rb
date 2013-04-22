@@ -1,14 +1,12 @@
 Depot::Application.routes.draw do
   resources :orders
-
-
   resources :line_items do
     post 'decrement', on: :member
-    #put 'decrement', on: :member
   end
-
   resources :carts
-  resources :products
+  resources :products do
+    get :who_bought, on: :member
+  end
 
   get "store/index"
   root to: 'store#index', as: 'store'
