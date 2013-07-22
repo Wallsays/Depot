@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   # GET /users
   # GET /users.json
   def index
@@ -78,7 +79,12 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
+    begin
+      @user.destroy
+      flash[:notice] = "User #{@user.name} successfully removed"
+    rescue Exception => e
+      flash[:notice] = e.message
+    end
 
     respond_to do |format|
       format.html { redirect_to users_url }
