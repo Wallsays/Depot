@@ -1,9 +1,6 @@
 Depot::Application.routes.draw do
   get "admin" => "admin#index"
 
-  # get "sessions/new"
-  # get "sessions/create"
-  # get "sessions/destroy"
   controller :sessions do
     get "login" => :new
     post "login" => :create
@@ -11,19 +8,25 @@ Depot::Application.routes.draw do
     get "logout" => :destroy
   end
 
-  resources :users
-  resources :orders
-  resources :carts
+  # Вложение объявления ресурсов и исходных точек входа в объявление 
+  # области видимости для :locale. 
+  # Кроме того, обозначение :locale взято в круглые скобки, 
+  # что является способом сообщить о его необязательном характере. 
+  scope '(:locale)' do
+    resources :users
+    resources :orders
+    resources :carts
 
-  resources :line_items do
-    post 'decrement', on: :member
+    resources :line_items do
+      post 'decrement', on: :member
+    end
+
+    resources :products do
+      get :who_bought, on: :member
+    end
+
+    get "store/index"
+    root to: 'store#index', as: 'store'
   end
-
-  resources :products do
-    get :who_bought, on: :member
-  end
-
-  get "store/index"
-  root to: 'store#index', as: 'store'
 
 end
