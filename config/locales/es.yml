@@ -59,5 +59,9 @@ es:
       pay_type:     "Forma de pago"
       pay_prompt_html: "Seleccione un m&eacute;todo de pago"
       submit:       "Realizar Pedido"
+    payment_types:
+      check: "Check transl" 
+      credit_card: "Credit transl" 
+      purchase_order: "Purchase transl" 
 
   thanks:           "Gracias por su pedido"
