@@ -11,6 +11,10 @@ class StoreController < ApplicationController
     # @count = increment_count
     # @products = Product.order(:title)
     # @cart = current_cart
+
+    latest = Product.latest
+    fresh_when etag: latest, last_modified: latest.created_at.utc
+    expires_in 10.minutes, public: true
   end
   
 end

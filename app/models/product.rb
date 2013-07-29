@@ -18,6 +18,11 @@ class Product < ActiveRecord::Base
   validates :title, length: {:minimum => 10,
                              :message => "at least 10 characters"}
 
+  def self.latest
+    Product.order('updated_at desc').limit(1).first
+  end
+
+
   private
 
     # ensure that there are no line items referencing this product
